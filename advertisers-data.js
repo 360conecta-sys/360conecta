@@ -15,6 +15,17 @@ window.ADVERTISERS = [
     photos: []
   },
   {
+    id: "erick-transportes-viagens",
+    name: "Erick Transportes e Viagens",
+    category: "Transportes",
+    description: "Fretes, transportes e mudanças em Caçapava do Sul. Entre em contato pelo WhatsApp para consultar disponibilidade e serviços.",
+    city: "Caçapava do Sul",
+    phone: "5555933804369",
+    logo: "https://i.postimg.cc/L4ZNNBTB/Whats-App-Image-2026-11-09-at-17-53-35.jpg",
+    cover: "https://i.postimg.cc/L4ZNNBTB/Whats-App-Image-2026-11-09-at-17-53-35.jpg",
+    photos: []
+  },
+  {
     id: "auto-center-exemplo",
     name: "Auto Center Exemplo",
     category: "Oficinas e Mecânicas",
