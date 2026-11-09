@@ -6,6 +6,14 @@
 
   const list = document.querySelector("#companyList");
   if (list) {
+    // Mantém a arte do anunciante contida no espaço da foto, sem invadir o texto do cartão.
+    const cardImageStyles = document.createElement("style");
+    cardImageStyles.textContent = `
+      #companyList .company-art.advertiser-card-art{position:relative;display:flex;align-items:center;justify-content:center;height:190px;min-height:190px;overflow:hidden;background:#080808}
+      #companyList .advertiser-card-art .advertiser-card-logo{position:static;display:block;width:100%;height:100%;max-width:100%;max-height:100%;padding:8px;object-fit:contain;object-position:center}
+    `;
+    document.head.append(cardImageStyles);
+
     const categoryFilter = document.querySelector("#categoryFilter");
     const categories = [...new Set(advertisers.map(item => item.category).filter(Boolean))];
     categories.forEach(category => {
@@ -18,7 +26,7 @@
         ? `<img src="${escapeHtml(item.logo)}" alt="Logo ${escapeHtml(item.name)}" class="advertiser-card-logo">`
         : `<div class="advertiser-initial">${escapeHtml(item.name.slice(0, 1))}</div>`;
       return `<article class="company-card" data-category="${escapeHtml(item.category)}" data-search="${escapeHtml(`${item.name} ${item.category} ${item.description} ${item.city}`)}">
-        <div class="company-art">${art}</div><div class="company-info"><span class="eyebrow">${escapeHtml(item.category)}</span><h3>${escapeHtml(item.name)}</h3><p>${escapeHtml(item.description)}</p><span class="city">⌖ ${escapeHtml(item.city)}</span><a class="button button-dark" href="anunciante.html?id=${encodeURIComponent(item.id)}">Ver anunciante →</a></div></article>`;
+        <div class="company-art advertiser-card-art">${art}</div><div class="company-info"><span class="eyebrow">${escapeHtml(item.category)}</span><h3>${escapeHtml(item.name)}</h3><p>${escapeHtml(item.description)}</p><span class="city">⌖ ${escapeHtml(item.city)}</span><a class="button button-dark" href="anunciante.html?id=${encodeURIComponent(item.id)}">Ver anunciante →</a></div></article>`;
     }).join("");
   }
 
