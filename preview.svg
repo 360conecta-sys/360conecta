@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Prévia do site 360 CONECTA</title>
+  <desc id="desc">Mockup da página inicial do diretório de empresas 360 Conecta.</desc>
+  <defs>
+    <linearGradient id="hero" x1="0" x2="1"><stop stop-color="#050505"/><stop offset=".58" stop-color="#17201a"/><stop offset="1" stop-color="#080808"/></linearGradient>
+    <style>
+      text{font-family:Arial,sans-serif;fill:#111} .white{fill:#fff}.green{fill:#b6ff23}.muted{fill:#666}.bold{font-weight:700}
+    </style>
+  </defs>
+  <rect width="1200" height="900" fill="#fafafa"/>
+  <rect width="1200" height="63" fill="#080808"/>
+  <circle cx="72" cy="31" r="20" fill="none" stroke="#b6ff23" stroke-width="2"/><text x="57" y="36" class="green bold" font-size="13">360</text>
+  <text x="101" y="38" class="white bold" font-size="19">360 <tspan class="green">CONECTA</tspan></text>
+  <rect x="330" y="10" width="560" height="43" rx="24" fill="#fff"/><text x="353" y="37" class="muted" font-size="14">Encontre empresas, produtos e serviços...</text>
+  <circle cx="866" cy="31" r="17" fill="#080808"/><text x="860" y="38" class="green" font-size="21">⌕</text>
+  <rect x="930" y="10" width="220" height="43" rx="24" fill="#b6ff23"/><text x="961" y="37" class="bold" font-size="13">FAÇA SEU CADASTRO</text>
+  <rect y="63" width="1200" height="48" fill="#141414"/><text x="42" y="84" class="green" font-size="12">⌖ Portal regional</text><text x="62" y="101" class="white bold" font-size="12">Empresas da sua cidade</text>
+  <text x="520" y="92" class="green bold" font-size="14">Início</text><text x="582" y="92" class="white bold" font-size="14">Categorias</text><text x="675" y="92" class="white bold" font-size="14">Anunciantes</text><text x="779" y="92" class="white bold" font-size="14">Planos</text><text x="852" y="92" class="white bold" font-size="14">Sobre o portal</text>
+  <rect x="48" y="136" width="1104" height="345" rx="27" fill="url(#hero)"/>
+  <path d="M340 136v345M615 136v345M890 136v345" stroke="#ffffff18" stroke-width="2"/>
+  <circle cx="470" cy="270" r="72" fill="#4d7350" opacity=".45"/><path d="M422 354q10-105 70-105t73 105" fill="#17251c"/><circle cx="735" cy="250" r="67" fill="#b48c64" opacity=".5"/><path d="M670 361q10-105 72-105t73 105" fill="#29231c"/><circle cx="1000" cy="250" r="66" fill="#d3a86f" opacity=".5"/><path d="M930 361q10-105 72-105t73 105" fill="#26352c"/>
+  <rect x="48" y="136" width="1104" height="345" rx="27" fill="url(#hero)" opacity=".36"/>
+  <rect x="82" y="247" width="118" height="28" rx="14" fill="#b6ff23"/><text x="98" y="266" class="bold" font-size="12">360 CONECTA</text>
+  <text x="82" y="320" class="white bold" font-size="37">Seja visto por quem</text><text x="82" y="364" class="white bold" font-size="37">procura você</text><text x="83" y="397" class="white" font-size="15">Anuncie no 360 CONECTA.</text>
+  <text x="48" y="535" class="bold" font-size="25">Categorias</text><text x="48" y="559" class="muted" font-size="14">Navegue pelos segmentos de anunciantes</text>
+  <g font-size="13" class="bold">
+    <g><rect x="48" y="580" width="211" height="62" rx="21" fill="#fff" stroke="#ddd"/><circle cx="78" cy="611" r="19" fill="#080808"/><text x="70" y="617" class="green" font-size="17">🚘</text><text x="107" y="615">Automóveis e</text><text x="107" y="631">Veículos</text></g>
+    <g><rect x="271" y="580" width="211" height="62" rx="21" fill="#fff" stroke="#ddd"/><circle cx="301" cy="611" r="19" fill="#080808"/><text x="294" y="617" class="green" font-size="17">♨</text><text x="330" y="616">Alimentação</text></g>
+    <g><rect x="494" y="580" width="211" height="62" rx="21" fill="#fff" stroke="#ddd"/><circle cx="524" cy="611" r="19" fill="#080808"/><text x="517" y="617" class="green" font-size="17">⚒</text><text x="553" y="615">Construção e</text><text x="553" y="631">Reformas</text></g>
+    <g><rect x="717" y="580" width="211" height="62" rx="21" fill="#fff" stroke="#ddd"/><circle cx="747" cy="611" r="19" fill="#080808"/><text x="740" y="617" class="green" font-size="17">▣</text><text x="776" y="615">Comunicação Visual</text><text x="776" y="631">e Gráficas</text></g>
+    <g><rect x="940" y="580" width="211" height="62" rx="21" fill="#fff" stroke="#ddd"/><circle cx="970" cy="611" r="19" fill="#080808"/><text x="963" y="617" class="green" font-size="17">⌂</text><text x="999" y="616">Comércio e Lojas</text></g>
+  </g>
+  <text x="48" y="700" class="bold" font-size="23">EMPRESAS EM DESTAQUE</text><text x="48" y="723" class="muted" font-size="14">Conteúdo demonstrativo — substitua pelos dados das empresas</text>
+  <g>
+    <g><rect x="48" y="742" width="258" height="140" rx="20" fill="#080808"/><text x="146" y="816" class="green" font-size="45">🔧</text><text x="66" y="856" class="green bold" font-size="12">OFICINAS E MECÂNICAS</text><text x="66" y="875" class="white bold" font-size="15">Auto Center Exemplo</text></g>
+    <g><rect x="328" y="742" width="258" height="140" rx="20" fill="#080808"/><text x="426" y="816" class="green" font-size="45">🍴</text><text x="346" y="856" class="green bold" font-size="12">ALIMENTAÇÃO</text><text x="346" y="875" class="white bold" font-size="15">Padaria Modelo</text></g>
+    <g><rect x="608" y="742" width="258" height="140" rx="20" fill="#080808"/><text x="706" y="816" class="green" font-size="45">✧</text><text x="626" y="856" class="green bold" font-size="12">BELEZA E ESTÉTICA</text><text x="626" y="875" class="white bold" font-size="15">Studio Beleza Demo</text></g>
+    <g><rect x="888" y="742" width="264" height="140" rx="20" fill="#080808"/><text x="990" y="816" class="green" font-size="45">⚒</text><text x="906" y="856" class="green bold" font-size="12">CONSTRUÇÃO E REFORMAS</text><text x="906" y="875" class="white bold" font-size="15">Construtora Exemplo</text></g>
+  </g>
+</svg>
