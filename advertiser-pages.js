@@ -30,9 +30,10 @@
       return;
     }
     document.title = `${advertiser.name} — 360 CONECTA`;
+    // Banner padronizado: mostra somente a imagem enviada pelo anunciante; sem texto ou conteúdo substituto.
     const cover = advertiser.cover
       ? `<img class="profile-cover-image" src="${escapeHtml(advertiser.cover)}" alt="Banner de ${escapeHtml(advertiser.name)}">`
-      : `<div class="profile-cover-placeholder"><span>BANNER DO ANUNCIANTE</span><strong>${escapeHtml(advertiser.name)}</strong><small>Adicione uma URL de banner em advertisers-data.js</small></div>`;
+      : '<div class="profile-cover-placeholder" aria-label="Banner ainda não cadastrado"></div>';
     const galleryPhotos = (advertiser.photos || []).filter(Boolean).slice(0, 5);
     const gallery = galleryPhotos.length
       ? `<section class="profile-gallery-section"><h2>Fotos</h2><div class="profile-gallery">${galleryPhotos.map((src, index) => `<img src="${escapeHtml(src)}" alt="Foto ${index + 1} de ${escapeHtml(advertiser.name)}" loading="lazy">`).join("")}</div></section>`

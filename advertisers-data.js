@@ -1,6 +1,7 @@
 // Cadastro dos anunciantes: edite este arquivo no GitHub para adicionar ou atualizar empresas.
 // Cada anunciante ganha uma página em anunciante.html?id=ID.
-// Imagens devem ser URLs públicas; deixe cover/photos vazios enquanto não tiver imagens.
+// Para banner horizontal padronizado, recomendamos 1600 x 500 px (proporção 3.2:1).
+// Informe a URL/caminho da imagem em cover. Se ficar vazio, a área fica vazia e sem texto.
 window.ADVERTISERS = [
   {
     id: "360-conecta",
