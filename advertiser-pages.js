@@ -6,11 +6,14 @@
 
   const list = document.querySelector("#companyList");
   if (list) {
-    // Mantém a arte do anunciante contida no espaço da foto, sem invadir o texto do cartão.
+    // Regras fortes para todos os cartões gerados: imagem contida no quadro e texto sempre abaixo.
     const cardImageStyles = document.createElement("style");
     cardImageStyles.textContent = `
-      #companyList .company-art.advertiser-card-art{position:relative;display:flex;align-items:center;justify-content:center;height:190px;min-height:190px;overflow:hidden;background:#080808}
-      #companyList .advertiser-card-art .advertiser-card-logo{position:static;display:block;width:100%;height:100%;max-width:100%;max-height:100%;padding:8px;object-fit:contain;object-position:center}
+      #companyList .company-card{display:flex!important;flex-direction:column!important;overflow:hidden!important;position:relative!important}
+      #companyList .company-card .company-art.advertiser-card-art{position:relative!important;inset:auto!important;display:flex!important;flex:0 0 186px!important;align-items:center!important;justify-content:center!important;width:100%!important;height:186px!important;min-height:186px!important;max-height:186px!important;margin:0!important;padding:0!important;overflow:hidden!important;background:#080808!important}
+      #companyList .company-card .advertiser-card-art .advertiser-card-logo{position:static!important;inset:auto!important;display:block!important;float:none!important;width:100%!important;height:100%!important;max-width:100%!important;max-height:100%!important;margin:0!important;padding:8px!important;object-fit:contain!important;object-position:center!important;transform:none!important}
+      #companyList .company-card .company-info{position:relative!important;inset:auto!important;z-index:1!important;display:flex!important;flex:1 0 auto!important;flex-direction:column!important;width:100%!important;height:auto!important;min-height:0!important;margin:0!important;overflow:visible!important;background:#fff!important}
+      #companyList .company-card .company-info .button{margin-top:12px!important}
     `;
     document.head.append(cardImageStyles);
 
@@ -38,7 +41,6 @@
       return;
     }
     document.title = `${advertiser.name} — 360 CONECTA`;
-    // Banner padronizado: mostra somente a imagem enviada pelo anunciante; sem texto ou conteúdo substituto.
     const cover = advertiser.cover
       ? `<img class="profile-cover-image" src="${escapeHtml(advertiser.cover)}" alt="Banner de ${escapeHtml(advertiser.name)}">`
       : '<div class="profile-cover-placeholder" aria-label="Banner ainda não cadastrado"></div>';
