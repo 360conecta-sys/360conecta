@@ -3,6 +3,16 @@
 const WHATSAPP_NUMBER = "5500000000000";
 const contactMessage = encodeURIComponent("Olá! Quero saber mais sobre divulgação no 360 CONECTA.");
 
+// Mantém a marca do cabeçalho e rodapé no formato original do portal.
+document.querySelectorAll(".logo").forEach(logo => {
+  logo.href = "index.html";
+  logo.setAttribute("aria-label", "360 CONECTA — início");
+  logo.innerHTML = '<span class="logo-mark">360</span><span>360 <strong>CONECTA</strong></span>';
+});
+document.querySelectorAll(".location b").forEach(element => {
+  element.textContent = "Empresas da sua cidade";
+});
+
 document.querySelectorAll(".whatsapp-link").forEach(link => {
   link.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${contactMessage}`;
   link.target = "_blank";
