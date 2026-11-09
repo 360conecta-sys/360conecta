@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 240" role="img" aria-labelledby="title desc">
+  <title id="title">360 CONECTA</title>
+  <desc id="desc">Seu portal regional de negócios em Caçapava do Sul e região.</desc>
+  <defs>
+    <linearGradient id="lime" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#b6ff23"/><stop offset="1" stop-color="#55d600"/></linearGradient>
+  </defs>
+  <path d="M65 70C245 3 565 3 697 64c34 16 24 61-20 87-48 28-88 38-126 48 94-46 121-92 74-114C507 33 267 54 65 70Z" fill="url(#lime)"/>
+  <path d="M112 77C45 112 27 147 55 167c17 12 41 18 70 21-45 18-88 9-103-12-24-34 7-70 90-99Z" fill="url(#lime)"/>
+  <text x="110" y="143" fill="#fff" font-family="Arial,sans-serif" font-size="112" font-weight="900" font-style="italic" letter-spacing="-8">360</text>
+  <path d="M550 62c-34 0-60 26-60 58 0 34 60 91 60 91s60-57 60-91c0-32-26-58-60-58Z" fill="url(#lime)"/>
+  <circle cx="550" cy="119" r="39" fill="#080808"/>
+  <path d="M526 111h48v6c0 7-5 11-10 11-4 0-7-2-9-5-2 3-5 5-9 5s-7-2-9-5c-2 3-5 5-9 5-5 0-10-4-10-11v-6Zm5 21h38v25h-38v-25Zm6 5v20h8v-20h-8Zm17 2h10v9h-10v-9Z" fill="#fff"/>
+  <text x="95" y="207" fill="#fff" font-family="Arial,sans-serif" font-size="52" font-weight="900" font-style="italic" letter-spacing="-2">CONECT</text>
+  <text x="529" y="207" fill="url(#lime)" font-family="Arial,sans-serif" font-size="52" font-weight="900" font-style="italic" letter-spacing="-2">A</text>
+  <path d="M96 218c175-25 388-23 558-5" fill="none" stroke="url(#lime)" stroke-width="5"/>
+</svg>
