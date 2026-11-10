@@ -83,20 +83,18 @@ window.ADVERTISERS = [
   }
 ];
 
-// Faz as imagens de banner preencherem a área, sem faixas vazias nas laterais.
+// Mantém a proporção original dos banners e mostra a imagem inteira, sem cortar informações.
 const bannerImageStyle = document.createElement("style");
 bannerImageStyle.textContent = `
   .advertiser-profile .profile-cover-image {
     display: block;
     width: 100%;
-    height: clamp(240px, 32vw, 420px);
-    object-fit: cover;
+    height: auto;
+    max-height: 420px;
+    object-fit: contain;
     object-position: center;
-  }
-  @media (max-width: 640px) {
-    .advertiser-profile .profile-cover-image {
-      height: 240px;
-    }
+    margin-inline: auto;
+    background: #080808;
   }
 `;
 document.head.append(bannerImageStyle);
