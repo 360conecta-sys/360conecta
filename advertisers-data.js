@@ -16,7 +16,7 @@ window.ADVERTISERS = [
   },
   {
     id: "erick-transportes-viagens",
-    name: "Erick Transportes e Viagens",
+    name: "Eric Transportes e Viagens",
     category: "Transportes",
     description: "Fretes, transportes e mudanças em Caçapava do Sul. Entre em contato pelo WhatsApp para consultar disponibilidade e serviços.",
     city: "Caçapava do Sul",
