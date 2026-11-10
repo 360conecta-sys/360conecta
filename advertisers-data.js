@@ -26,6 +26,18 @@ window.ADVERTISERS = [
     photos: []
   },
   {
+    id: "cia-47-mobilidade-urbana",
+    name: "Cia 47 mobilidade urbana",
+    category: "Transporte e Entregas",
+    description: "Mobilidade urbana. Baixe o aplicativo Cia 47 para Android.",
+    city: "Caçapava do Sul",
+    phone: "5500000000000",
+    logo: "https://i.postimg.cc/1RknCSzB/Whats-App-Image-2026-11-10-at-14-47-02.jpg",
+    cover: "https://i.postimg.cc/1RknCSzB/Whats-App-Image-2026-11-10-at-14-47-02.jpg",
+    appLink: "https://play.google.com/store/apps/details?id=br.com.cia47.passenger.drivermachine&utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAcGRvZgJzcnRjBmFwcF9pZA85MzY2MTk3NDMzOTI0NTkAAac1rOWmP50bTvak6PHnVYDwKpgqCY_z1KI5qYuafAw_nwPZkbJVqyvafCGfow_aem_Qcr9N0lTOpOfuS6atJWDkw",
+    photos: []
+  },
+  {
     id: "auto-center-exemplo",
     name: "Auto Center Exemplo",
     category: "Oficinas e Mecânicas",
