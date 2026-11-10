@@ -13,8 +13,7 @@ document.querySelectorAll(".location b").forEach(element => {
   element.textContent = "Empresas da sua cidade";
 });
 
-// Preenche as laterais de cada banner com uma ampliação suavizada da própria imagem,
-// mantendo o arquivo original inteiro e sem distorções na camada frontal.
+// Amplia visualmente as laterais dos banners de perfil, mantendo a arte inteira no centro.
 const bannerStyle = document.createElement("style");
 bannerStyle.textContent = `
   .adaptive-banner-frame {
@@ -52,35 +51,25 @@ bannerStyle.textContent = `
     object-position: center !important;
     background: transparent !important;
   }
-  .adaptive-banner-frame.client-ad-frame {
-    height: auto !important;
-    min-height: 180px !important;
-    max-height: 420px !important;
-    aspect-ratio: 2.5 / 1 !important;
-  }
-  @media (max-width: 640px) {
-    .adaptive-banner-frame { min-height: 150px !important; }
-    .adaptive-banner-frame.client-ad-frame { min-height: 150px !important; }
-  }
 `;
 document.head.append(bannerStyle);
 
-function enhanceBannerImage(image) {
+function enhanceProfileBanner(image) {
   if (!(image instanceof HTMLImageElement) || image.parentElement?.classList.contains("adaptive-banner-frame")) return;
-  if (!image.classList.contains("profile-cover-image") && !image.classList.contains("client-ad-image")) return;
+  if (!image.classList.contains("profile-cover-image")) return;
   const frame = document.createElement("div");
-  frame.className = `adaptive-banner-frame${image.classList.contains("client-ad-image") ? " client-ad-frame" : " profile-cover-frame"}`;
+  frame.className = "adaptive-banner-frame profile-cover-frame";
   frame.style.setProperty("--banner-image", `url("${(image.currentSrc || image.src).replaceAll('"', '%22')}")`);
   image.parentNode.insertBefore(frame, image);
   frame.append(image);
 }
 
-// Também processa as imagens de perfil inseridas dinamicamente pelo gerador de anunciantes.
-document.querySelectorAll(".profile-cover-image, .client-ad-image").forEach(enhanceBannerImage);
+// A ficha do anunciante é montada dinamicamente pelo gerador.
+document.querySelectorAll(".profile-cover-image").forEach(enhanceProfileBanner);
 new MutationObserver(records => {
   records.forEach(record => record.addedNodes.forEach(node => {
-    if (node instanceof HTMLImageElement) enhanceBannerImage(node);
-    else if (node instanceof Element) node.querySelectorAll?.(".profile-cover-image, .client-ad-image").forEach(enhanceBannerImage);
+    if (node instanceof HTMLImageElement) enhanceProfileBanner(node);
+    else if (node instanceof Element) node.querySelectorAll?.(".profile-cover-image").forEach(enhanceProfileBanner);
   }));
 }).observe(document.documentElement, { childList: true, subtree: true });
 
@@ -101,8 +90,9 @@ if (adBox) {
   adLink.append(adImage);
   adBox.replaceChildren(adLink);
   adBox.classList.add("client-ad-box");
+  // Restaura o anúncio ao visual simples anterior, sem extensão desfocada nas laterais.
   const adStyle = document.createElement("style");
-  adStyle.textContent = ".client-ad-box{padding:0!important;overflow:hidden}.client-ad-link{display:block;width:100%;height:100%;min-height:180px}";
+  adStyle.textContent = ".client-ad-box{padding:0!important;overflow:hidden}.client-ad-link{display:flex;width:100%;height:100%;align-items:center;justify-content:center}.client-ad-image{display:block;width:100%;height:100%;max-height:240px;object-fit:contain;object-position:center;border-radius:inherit}";
   document.head.append(adStyle);
 }
 
