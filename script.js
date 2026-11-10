@@ -13,64 +13,70 @@ document.querySelectorAll(".location b").forEach(element => {
   element.textContent = "Empresas da sua cidade";
 });
 
-// Estende visualmente as laterais de banners sem cortar nem distorcer a imagem original.
-const adaptiveBannerStyle = document.createElement("style");
-adaptiveBannerStyle.textContent = `
+// Preenche as laterais de cada banner com uma ampliação suavizada da própria imagem,
+// mantendo o arquivo original inteiro e sem distorções na camada frontal.
+const bannerStyle = document.createElement("style");
+bannerStyle.textContent = `
   .adaptive-banner-frame {
-    position: relative;
-    isolation: isolate;
-    display: block;
-    width: 100%;
-    aspect-ratio: 2.5 / 1;
-    min-height: 180px;
-    max-height: 420px;
-    overflow: hidden;
-    background: #111;
+    position: relative !important;
+    isolation: isolate !important;
+    display: block !important;
+    width: 100% !important;
+    aspect-ratio: 2.5 / 1 !important;
+    min-height: 180px !important;
+    max-height: 420px !important;
+    overflow: hidden !important;
+    background: #111 !important;
   }
   .adaptive-banner-frame::before {
-    content: "";
-    position: absolute;
-    z-index: 0;
-    inset: -18px;
-    background-image: var(--banner-image);
-    background-position: center;
-    background-size: 100% 100%;
-    filter: blur(18px) brightness(.8);
-    transform: scale(1.04);
+    content: "" !important;
+    position: absolute !important;
+    z-index: 0 !important;
+    inset: -20px !important;
+    background-image: var(--banner-image) !important;
+    background-position: center !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    filter: blur(14px) brightness(.78) !important;
+    transform: scale(1.05) !important;
   }
   .adaptive-banner-frame > img {
-    position: relative;
-    z-index: 1;
-    display: block;
-    width: 100%;
-    height: 100%;
-    max-height: none;
-    margin: 0;
-    object-fit: contain;
-    object-position: center;
+    position: relative !important;
+    z-index: 1 !important;
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-height: none !important;
+    margin: 0 auto !important;
+    object-fit: contain !important;
+    object-position: center !important;
+    background: transparent !important;
   }
   .adaptive-banner-frame.client-ad-frame {
-    height: 100%;
-    min-height: 180px;
-    max-height: 420px;
-    aspect-ratio: auto;
+    height: auto !important;
+    min-height: 180px !important;
+    max-height: 420px !important;
+    aspect-ratio: 2.5 / 1 !important;
+  }
+  @media (max-width: 640px) {
+    .adaptive-banner-frame { min-height: 150px !important; }
+    .adaptive-banner-frame.client-ad-frame { min-height: 150px !important; }
   }
 `;
-document.head.append(adaptiveBannerStyle);
+document.head.append(bannerStyle);
 
 function enhanceBannerImage(image) {
   if (!(image instanceof HTMLImageElement) || image.parentElement?.classList.contains("adaptive-banner-frame")) return;
   if (!image.classList.contains("profile-cover-image") && !image.classList.contains("client-ad-image")) return;
   const frame = document.createElement("div");
   frame.className = `adaptive-banner-frame${image.classList.contains("client-ad-image") ? " client-ad-frame" : " profile-cover-frame"}`;
-  const imageUrl = image.currentSrc || image.src;
-  frame.style.setProperty("--banner-image", `url(${JSON.stringify(imageUrl)})`);
+  frame.style.setProperty("--banner-image", `url("${(image.currentSrc || image.src).replaceAll('"', '%22')}")`);
   image.parentNode.insertBefore(frame, image);
   frame.append(image);
 }
 
+// Também processa as imagens de perfil inseridas dinamicamente pelo gerador de anunciantes.
 document.querySelectorAll(".profile-cover-image, .client-ad-image").forEach(enhanceBannerImage);
-// A ficha do anunciante é montada dinamicamente; observa banners inseridos depois da carga.
 new MutationObserver(records => {
   records.forEach(record => record.addedNodes.forEach(node => {
     if (node instanceof HTMLImageElement) enhanceBannerImage(node);
