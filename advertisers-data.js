@@ -82,19 +82,3 @@ window.ADVERTISERS = [
     photos: []
   }
 ];
-
-// Mantém a proporção original dos banners e mostra a imagem inteira, sem cortar informações.
-const bannerImageStyle = document.createElement("style");
-bannerImageStyle.textContent = `
-  .advertiser-profile .profile-cover-image {
-    display: block;
-    width: 100%;
-    height: auto;
-    max-height: 420px;
-    object-fit: contain;
-    object-position: center;
-    margin-inline: auto;
-    background: #080808;
-  }
-`;
-document.head.append(bannerImageStyle);
