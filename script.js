@@ -13,66 +13,6 @@ document.querySelectorAll(".location b").forEach(element => {
   element.textContent = "Empresas da sua cidade";
 });
 
-// Amplia visualmente as laterais dos banners de perfil, mantendo a arte inteira no centro.
-const bannerStyle = document.createElement("style");
-bannerStyle.textContent = `
-  .adaptive-banner-frame {
-    position: relative !important;
-    isolation: isolate !important;
-    display: block !important;
-    width: 100% !important;
-    aspect-ratio: 2.5 / 1 !important;
-    min-height: 180px !important;
-    max-height: 420px !important;
-    overflow: hidden !important;
-    background: #111 !important;
-  }
-  .adaptive-banner-frame::before {
-    content: "" !important;
-    position: absolute !important;
-    z-index: 0 !important;
-    inset: -20px !important;
-    background-image: var(--banner-image) !important;
-    background-position: center !important;
-    background-size: cover !important;
-    background-repeat: no-repeat !important;
-    filter: blur(14px) brightness(.78) !important;
-    transform: scale(1.05) !important;
-  }
-  .adaptive-banner-frame > img {
-    position: relative !important;
-    z-index: 1 !important;
-    display: block !important;
-    width: 100% !important;
-    height: 100% !important;
-    max-height: none !important;
-    margin: 0 auto !important;
-    object-fit: contain !important;
-    object-position: center !important;
-    background: transparent !important;
-  }
-`;
-document.head.append(bannerStyle);
-
-function enhanceProfileBanner(image) {
-  if (!(image instanceof HTMLImageElement) || image.parentElement?.classList.contains("adaptive-banner-frame")) return;
-  if (!image.classList.contains("profile-cover-image")) return;
-  const frame = document.createElement("div");
-  frame.className = "adaptive-banner-frame profile-cover-frame";
-  frame.style.setProperty("--banner-image", `url("${(image.currentSrc || image.src).replaceAll('"', '%22')}")`);
-  image.parentNode.insertBefore(frame, image);
-  frame.append(image);
-}
-
-// A ficha do anunciante é montada dinamicamente pelo gerador.
-document.querySelectorAll(".profile-cover-image").forEach(enhanceProfileBanner);
-new MutationObserver(records => {
-  records.forEach(record => record.addedNodes.forEach(node => {
-    if (node instanceof HTMLImageElement) enhanceProfileBanner(node);
-    else if (node instanceof Element) node.querySelectorAll?.(".profile-cover-image").forEach(enhanceProfileBanner);
-  }));
-}).observe(document.documentElement, { childList: true, subtree: true });
-
 // Exibe a arte da Eric Transportes no primeiro espaço publicitário da página inicial.
 const adBox = document.querySelector(".ad-grid .ad-box");
 if (adBox) {
@@ -90,7 +30,6 @@ if (adBox) {
   adLink.append(adImage);
   adBox.replaceChildren(adLink);
   adBox.classList.add("client-ad-box");
-  // Restaura o anúncio ao visual simples anterior, sem extensão desfocada nas laterais.
   const adStyle = document.createElement("style");
   adStyle.textContent = ".client-ad-box{padding:0!important;overflow:hidden}.client-ad-link{display:flex;width:100%;height:100%;align-items:center;justify-content:center}.client-ad-image{display:block;width:100%;height:100%;max-height:240px;object-fit:contain;object-position:center;border-radius:inherit}";
   document.head.append(adStyle);
