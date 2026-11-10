@@ -82,3 +82,21 @@ window.ADVERTISERS = [
     photos: []
   }
 ];
+
+// Faz as imagens de banner preencherem a área, sem faixas vazias nas laterais.
+const bannerImageStyle = document.createElement("style");
+bannerImageStyle.textContent = `
+  .advertiser-profile .profile-cover-image {
+    display: block;
+    width: 100%;
+    height: clamp(240px, 32vw, 420px);
+    object-fit: cover;
+    object-position: center;
+  }
+  @media (max-width: 640px) {
+    .advertiser-profile .profile-cover-image {
+      height: 240px;
+    }
+  }
+`;
+document.head.append(bannerImageStyle);
