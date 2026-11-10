@@ -13,6 +13,71 @@ document.querySelectorAll(".location b").forEach(element => {
   element.textContent = "Empresas da sua cidade";
 });
 
+// Estende visualmente as laterais de banners sem cortar nem distorcer a imagem original.
+const adaptiveBannerStyle = document.createElement("style");
+adaptiveBannerStyle.textContent = `
+  .adaptive-banner-frame {
+    position: relative;
+    isolation: isolate;
+    display: block;
+    width: 100%;
+    aspect-ratio: 2.5 / 1;
+    min-height: 180px;
+    max-height: 420px;
+    overflow: hidden;
+    background: #111;
+  }
+  .adaptive-banner-frame::before {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    inset: -18px;
+    background-image: var(--banner-image);
+    background-position: center;
+    background-size: 100% 100%;
+    filter: blur(18px) brightness(.8);
+    transform: scale(1.04);
+  }
+  .adaptive-banner-frame > img {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-height: none;
+    margin: 0;
+    object-fit: contain;
+    object-position: center;
+  }
+  .adaptive-banner-frame.client-ad-frame {
+    height: 100%;
+    min-height: 180px;
+    max-height: 420px;
+    aspect-ratio: auto;
+  }
+`;
+document.head.append(adaptiveBannerStyle);
+
+function enhanceBannerImage(image) {
+  if (!(image instanceof HTMLImageElement) || image.parentElement?.classList.contains("adaptive-banner-frame")) return;
+  if (!image.classList.contains("profile-cover-image") && !image.classList.contains("client-ad-image")) return;
+  const frame = document.createElement("div");
+  frame.className = `adaptive-banner-frame${image.classList.contains("client-ad-image") ? " client-ad-frame" : " profile-cover-frame"}`;
+  const imageUrl = image.currentSrc || image.src;
+  frame.style.setProperty("--banner-image", `url(${JSON.stringify(imageUrl)})`);
+  image.parentNode.insertBefore(frame, image);
+  frame.append(image);
+}
+
+document.querySelectorAll(".profile-cover-image, .client-ad-image").forEach(enhanceBannerImage);
+// A ficha do anunciante é montada dinamicamente; observa banners inseridos depois da carga.
+new MutationObserver(records => {
+  records.forEach(record => record.addedNodes.forEach(node => {
+    if (node instanceof HTMLImageElement) enhanceBannerImage(node);
+    else if (node instanceof Element) node.querySelectorAll?.(".profile-cover-image, .client-ad-image").forEach(enhanceBannerImage);
+  }));
+}).observe(document.documentElement, { childList: true, subtree: true });
+
 // Exibe a arte da Eric Transportes no primeiro espaço publicitário da página inicial.
 const adBox = document.querySelector(".ad-grid .ad-box");
 if (adBox) {
@@ -31,7 +96,7 @@ if (adBox) {
   adBox.replaceChildren(adLink);
   adBox.classList.add("client-ad-box");
   const adStyle = document.createElement("style");
-  adStyle.textContent = ".client-ad-box{padding:0!important;overflow:hidden}.client-ad-link{display:flex;width:100%;height:100%;align-items:center;justify-content:center}.client-ad-image{display:block;width:100%;height:100%;max-height:240px;object-fit:contain;object-position:center;border-radius:inherit}";
+  adStyle.textContent = ".client-ad-box{padding:0!important;overflow:hidden}.client-ad-link{display:block;width:100%;height:100%;min-height:180px}";
   document.head.append(adStyle);
 }
 
