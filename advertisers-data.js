@@ -80,5 +80,16 @@ window.ADVERTISERS = [
     logo: "",
     cover: "",
     photos: []
+  },
+  {
+    id: "hots-gourmet-delivery",
+    name: "HOTS GOURMET - DELIVERY",
+    category: "Alimentação",
+    description: "Venha provar uma explosão de sabores! Atendimento sexta e sábado, das 19h30 às 23h.",
+    city: "Caçapava do Sul",
+    phone: "5500000000000",
+    logo: "https://i.postimg.cc/jjgT6nYR/Whats-App-Image-2026-11-14-at-10-42-02.jpg",
+    cover: "https://i.postimg.cc/wvyChWkJ/Whats-App-Image-2026-11-14-at-10-41-38.jpg",
+    photos: []
   }
 ];
